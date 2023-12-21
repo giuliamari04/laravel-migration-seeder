@@ -66,8 +66,22 @@ npm install
 
 # inserisco i dati per il collegamento al db in env
 
-# creo il database da phpmyadmin
+#creo migration
+php artisan make:migration create_nome_tabella_table
+php artisan make:migration update_users_table --table=users
+php artisan make:migration add_phone_number_to_users_table
 
+#lanciare migration
+php artisan migrate
+
+#revert migration
+php artisan migrate:rollback
+
+
+#popolare il db
+php artisan make:seeder UsersTableSeeder
+
+php artisan db:seed --class=UsersTableSeeder
 
 # preparo le rotte file web.php es. 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
@@ -81,3 +95,32 @@ php artisan make:model Nome
 # creo le views relative
 
 ```
+
+## consegna 
+
+- nome repo: laravel-migration-seeder
+
+Creaiamo un database da phpmyadmin (es. train_db)
+
+Creiamo una tabella trains e relativa Migration
+
+Ogni treno dovrà avere:
+- Azienda
+- Stazione di partenza
+- Stazione di arrivo
+- Orario di partenza
+- Orario di arrivo
+- Codice Treno
+- Numero Carrozze
+- In orario
+- Cancellato
+
+È probabile che siano necessarie altre colonne per far funzionare la tabella nel modo corretto
+
+Create il Model Train e
+Aggiungete un seeder per la classe Train usando FakerPHP.
+
+Create  relativo ed un Controller per mostrare nella home page tutti i treni che sono in partenza dalla data odierna.
+
+Bonus:
+Create  relativo Controller e rotta per mostrare tutti i treni che sono in partenza dalla data odierna.
