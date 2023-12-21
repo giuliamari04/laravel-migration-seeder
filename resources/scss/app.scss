@@ -9,6 +9,22 @@ $fa-font-path: "../webfonts" !default;
 
 @import '~bootstrap/scss/bootstrap';
 
-h1 {
-    color: $text-color;
+#header{
+    color: white;
+    background-color:rgb(31, 31, 31) ;
+    height: 10vh;
+}
+#home{
+    height: 80vh;
+    background-image: url('https://imbruttito.com/images/milano-stazione-centrale.jpg?p=16x9&s=e399d0f6e5c3b79464c50a661732756d');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#footer{
+    text-align: center;
+    color: white;
+    background-color:rgb(31, 31, 31) ;
+    height: 10vh;
+    padding-top: 2%;
 }

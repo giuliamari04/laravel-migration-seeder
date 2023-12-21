@@ -1,14 +1,12 @@
 @extends('layouts.app')
-
-@section('title', 'Home')
-
+@section('title','Houses')
 @section('content')
-<main id="home">
-    <div class="container ">
-    <h1 class="text-light">Elenco treni</h1>
+
+<main class="container">
+    <h1>Elenco treni</h1>
     <div class="row">
 
-        <table class="table table-striped">
+        <table class="table">
             <thead>
               <tr>
                 <th scope="col">nr. treno</th>
@@ -16,9 +14,8 @@
                 <th scope="col">Arrivo</th>
                 <th scope="col">orario di partenza</th>
                 <th scope="col">orario di arrivo</th>
-                <th scope="col">Stato treno</th>
+                <th scope="col">ritardo</th>
                 <th scope="col">azienda</th>
-
               </tr>
             </thead>
             <tbody>
@@ -30,11 +27,7 @@
                 <td>{{$train->orario_partenza}}</td>
                 <td>{{$train->orario_arrivo}}</td>
                 <td>
-                        @if ($train->cancellato == 1)
-                            <span class="text-bg-danger p-2 ">cancellato</span>
-                        @else
-                            {{ $train->in_orario ? 'In Orario' : 'Ritardo' }}
-                        @endif
+                    {{ $train->in_orario ? 'In Orario' : 'Ritardo' }}
                 </td>
 
                 <td>{{$train->azienda}}</td>
@@ -45,7 +38,6 @@
 
 
     </div>
-</div>
 </main>
-
 @endsection
+
