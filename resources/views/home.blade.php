@@ -12,12 +12,13 @@
             <thead>
               <tr>
                 <th scope="col">nr. treno</th>
+                <th scope="col">azienda</th>
                 <th scope="col">Partenza</th>
                 <th scope="col">Arrivo</th>
                 <th scope="col">orario di partenza</th>
                 <th scope="col">orario di arrivo</th>
                 <th scope="col">Stato treno</th>
-                <th scope="col">azienda</th>
+
 
               </tr>
             </thead>
@@ -25,19 +26,24 @@
                 @foreach ($trains as $train )
               <tr>
                 <th scope="row">{{$train->codice}}</th>
+                <td>{{$train->azienda}}</td>
                 <td>{{$train->stazione_partenza}}</td>
                 <td>{{$train->stazione_arrivo}}</td>
                 <td>{{$train->orario_partenza}}</td>
                 <td>{{$train->orario_arrivo}}</td>
-                <td>
-                        @if ($train->cancellato == 1)
-                            <span class="text-bg-danger p-2 ">cancellato</span>
-                        @else
-                            {{ $train->in_orario ? 'In Orario' : 'Ritardo' }}
-                        @endif
-                </td>
 
-                <td>{{$train->azienda}}</td>
+                        @if ($train->cancellato == 1)
+                        <td class="text-bg-danger ">
+                            <span>Cancellato</span>
+                        </td>
+                        @else
+                        <td class="{{ $train->in_orario ? 'text-bg-success' : 'text-bg-warning' }}">
+                            {{ $train->in_orario ? 'In Orario' : 'Ritardo' }}
+                            @if (!$train->in_orario)
+                          <span> ( {{ rand(1, 60) }} minuti)</span>
+                            @endif
+                        </td>
+                        @endif
               </tr>
               @endforeach
             </tbody>
