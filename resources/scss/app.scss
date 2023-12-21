@@ -16,6 +16,7 @@ $fa-font-path: "../webfonts" !default;
 }
 #home{
     height: 80vh;
+    overflow-y: auto;
     background-image: url('https://imbruttito.com/images/milano-stazione-centrale.jpg?p=16x9&s=e399d0f6e5c3b79464c50a661732756d');
     background-position: center;
     background-size: cover;
